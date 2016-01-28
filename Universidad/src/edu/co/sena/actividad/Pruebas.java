@@ -16,28 +16,45 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         Alumno al1 = new Alumno();
-        al1.setNota1(25.4);
-        al1.setNota3(25.4);
-        al1.setNota2(25.4);
-//        System.out.println(al1.getPromedio());
-//       Alumno al2 = new Alumno();
-//       Alumno al3 = new Alumno();
-//       al1.setIdentificacion("97081623485");
-//       al2.setIdentificacion("97081623485");
-//       al3.setIdentificacion("97081623484");
-//       Profesor pro = new Profesor();
-//       pro.AgregarAlumno(al1);
-//       pro.AgregarAlumno(al2);
-//       pro.AgregarAlumno(al3);
-//       pro.MostrarAlumnos();
-        double promedTemp =(int) 10*al1.getPromedio();
+        al1.setNota1(3.0);
+        al1.setNota3(3.0);
+        al1.setNota2(3.0);
+        System.out.println(al1.getPromedio());
+       Alumno al2 = new Alumno();
+       Alumno al3 = new Alumno();
+       al1.setIdentificacion("97081623485");
+       al2.setIdentificacion("97081623485");
+       al3.setIdentificacion("97081623484");
+       Profesor pro = new Profesor();
+       pro.AgregarAlumno(al1);
+       pro.AgregarAlumno(al2);
+       pro.AgregarAlumno(al3);
+       pro.MostrarAlumnos();
+        double promedTemp = al1.getPromedio();
+        double promTemp=al1.getPromedio()*10 ;
+        if (promTemp%10>=5) {
+        promedTemp=promedTemp +1;    
+        }
+        
         double prom;
-        double promDouble;
-        String promed="";
+        double acom;
+        double promDouble=0;
+        String promed = "";
+
         do {
-            prom = (int) promedTemp %10;
-            
-            
+ acom = (int) promedTemp % 10;
+ promDouble = (promDouble*10)+acom;
+        promedTemp = promedTemp / 10;
+        } while (promedTemp>=1);
+       
+  int cont =0;
+       
+
+        do {
+            prom = (int) promDouble % 10;
+             if (cont==1) {
+                promed = promed+ " punto";
+            }
 //            prom =  promedTemp;
             switch ((int) prom) {
                 case 1:
@@ -46,33 +63,37 @@ public class Pruebas {
                 case 2:
                     promed = promed + " dos";
                     break;
-                case 3: 
+                case 3:
                     promed = promed + " tres";
                     break;
-                case 4: 
+                case 4:
                     promed = promed + " cuatro";
                     break;
-                case 5: 
+                case 5:
                     promed = promed + " cinco";
                     break;
-                case 6: 
-                    promed = promed + " seid";
+                case 6:
+                    promed = promed + " seis";
                     break;
-                case 7: 
+                case 7:
                     promed = promed + " siete";
                     break;
-                case 8: 
+                case 8:
                     promed = promed + " ocho";
                     break;
-                case 9: 
+                case 9:
                     promed = promed + " nueve";
                     break;
-                default: 
+                case  0: 
+                    promed = promed + " cero";
+                    break;
+                default:
                     System.out.println("Error");
                     break;
             }
-            promedTemp = promedTemp / 10;
-        } while (promedTemp >= 1);
+            cont++;
+            promDouble = promDouble / 10;
+        } while (promDouble >=0.1);
         System.out.println(promed);
 
     }
